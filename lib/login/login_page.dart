@@ -1,7 +1,7 @@
 import 'package:chatbox/assets/image.dart';
+import 'package:chatbox/create_page/login_with_account.dart';
 import 'package:chatbox/signup_page/signup_page.dart';
 import 'package:flutter/material.dart';
-
 class Login extends StatefulWidget {
   const Login({super.key});
 
@@ -127,10 +127,13 @@ class _LoginState extends State<Login> {
 
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center  ,
                         children: [
-                          Icon(Icons.apple),
-
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(30,0,0,0),
+                            child: Icon(Icons.apple,size: 30,),
+                          ),
+SizedBox(width: 12),
                           Text(
                             'Continue with Apple',
                             style: TextStyle(
@@ -150,7 +153,7 @@ class _LoginState extends State<Login> {
 
                     ElevatedButton(
                       onPressed: () {
-
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => LoginWithAccount()));
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF00CDBD),
@@ -217,13 +220,19 @@ class _LoginState extends State<Login> {
       children: [
         Expanded(child: Container(color: Color(0xFF00CDBD), height: 1)),
         SizedBox(width: 16),
-        Text('or'),
+        Text('or',
+        style: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.w600,
+          color: Color(0xFF616161),
+        ),),
         SizedBox(width: 16),
         Expanded(child: Container(color: Color(0xFF00CDBD), height: 1)),
       ],
     );
   }
 }
+
 // Widget tạo nút đăng nhập
 Widget _buildLoginOption({
   required IconData icon,

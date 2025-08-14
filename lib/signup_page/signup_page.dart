@@ -33,12 +33,12 @@ class _SignupPageState extends State<SignupPage> {
       appBar: AppBar(),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.fromLTRB(24,0,24,0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(top: 40.0, bottom: 20),
+                padding: const EdgeInsets.only(top: 30.0),
                 child: Text(
                   'Create your Account',
                   style: TextStyle(
@@ -48,56 +48,65 @@ class _SignupPageState extends State<SignupPage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 59.75),
+              const SizedBox(height: 59),
 
               // Email
-              TextField(
-                focusNode: _emailFocus,
-                controller: _emailController,
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  filled: true,
-                  fillColor:
-                  _emailFocus.hasFocus ? Color(0xff00CDBD) : Color(0xffFAFAFA),
-                  hintText: 'Nhập email của bạn',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                child: TextField(
+                  focusNode: _emailFocus,
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                    labelText: 'Email',
+                   // filled: true,
+                    fillColor: _emailFocus.hasFocus
+                        ? Color(0xff00CDBD)
+                        : Color(0xffFAFAFA),
+                    hintText: 'Nhập email của bạn',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    prefixIcon: Icon(Icons.mail, color: Color(0XFF9E9E9E)),
                   ),
-                  prefixIcon: Icon(Icons.mail, color: Color(0XFF9E9E9E)),
+                  keyboardType: TextInputType.emailAddress,
                 ),
-                keyboardType: TextInputType.emailAddress,
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 24),
 
               // Password
-              TextField(
-                focusNode: _passwordFocus,
-                controller: _passwordController,
-                obscureText: !_showPass,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  filled: true,
-                  fillColor:
-                  _passwordFocus.hasFocus ? Color(0xff00CDBD) : Color(0xffFAFAFA),
-                  hintText: 'Nhập mật khẩu',
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      _showPass ? Icons.visibility : Icons.visibility_off,
-                      color:
-                      _passwordFocus.hasFocus ? Color(0xff00CDBD) : Color(0xffFAFAFA) ,
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                child: TextField(
+                  focusNode: _passwordFocus,
+                  controller: _passwordController,
+                  obscureText: !_showPass,
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                  //  filled: true,
+                    fillColor: _passwordFocus.hasFocus
+                        ? Color(0xff00CDBD)
+                        : Color(0xffFAFAFA),
+                    hintText: 'Nhập mật khẩu',
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _showPass ? Icons.visibility : Icons.visibility_off,
 
-
+                      //   color: _passwordFocus.hasFocus
+                      //   //    ? Color(0xff00CDBD)
+                      //     //  : Color(0xff00CDBD),
+                      //
+                        ),
+                      onPressed: () {
+                        setState(() {
+                          _showPass = !_showPass;
+                        });
+                      },
                     ),
-                    onPressed: () {
-                      setState(() {
-                        _showPass = !_showPass;
-                      });
-                    },
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    prefixIcon: Icon(Icons.lock, color: Color(0XFF9E9E9E)),
                   ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  prefixIcon: Icon(Icons.lock, color: Color(0XFF9E9E9E)),
                 ),
               ),
               const SizedBox(height: 20),
@@ -136,34 +145,40 @@ class _SignupPageState extends State<SignupPage> {
               const SizedBox(height: 20),
 
               // Sign up button
-              SizedBox(
-                width: double.infinity,
-                height: 58,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Login()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0XFF11B1A5),
-                  ),
-                  child: const Text(
-                    "Sign Up",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
+              Center(
+                child: SizedBox(
+                  width: 380,
+
+                  height: 58,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Login()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0XFF11B1A5),
+                    ),
+                    child: const Text(
+                      "Sign Up",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
               ),
 
-              const SizedBox(height: 40),
+              const SizedBox(
+                  width: 24,
+              height: 59),
               _buildOr(),
 
-              const SizedBox(height: 30),
+              const SizedBox(width: 24,
+                  height: 30),
 
               // Social buttons
               Row(
@@ -175,9 +190,8 @@ class _SignupPageState extends State<SignupPage> {
                 ],
               ),
 
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 10),
-                width: double.infinity,
+              Padding(
+                padding: const EdgeInsets.fromLTRB(75,59,75,0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -195,8 +209,7 @@ class _SignupPageState extends State<SignupPage> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => SignInPage()),
+                          MaterialPageRoute(builder: (context) => SignInPage()),
                         );
                       },
                       child: const Text(
@@ -222,7 +235,7 @@ class _SignupPageState extends State<SignupPage> {
     return Row(
       children: const [
         Expanded(child: Divider(color: Color(0xFFEEEEEE))),
-        SizedBox(width: 45),
+        SizedBox(width: 16),
         Text(
           'or continue with',
           style: TextStyle(
@@ -231,7 +244,7 @@ class _SignupPageState extends State<SignupPage> {
             color: Color(0xFF616161),
           ),
         ),
-        SizedBox(width: 45),
+        SizedBox(width: 16),
         Expanded(child: Divider(color: Color(0xFFEEEEEE))),
       ],
     );
@@ -244,11 +257,7 @@ class _SignupPageState extends State<SignupPage> {
         border: Border.all(color: Color(0xFFEEEEEE), width: 1),
         borderRadius: BorderRadius.circular(16),
       ),
-      child: Image.asset(
-        assetPath,
-        width: 24,
-        height: 24,
-      ),
+      child: Image.asset(assetPath, width: 24, height: 24),
     );
   }
 }

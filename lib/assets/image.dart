@@ -4,4 +4,6 @@ class ImageAssets{
  static const logo_fb = '$imagePath/Logo_fb.png';
  static const logo_gg = '$imagePath/logoGG.png';
  static const logo_apple = '$imagePath/icon_apple_signup.png';
+ static const email = '$imagePath/email.png';
+ static const lock = '$imagePath/lock.png';
 }

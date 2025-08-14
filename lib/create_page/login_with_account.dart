@@ -1,4 +1,6 @@
 import 'package:chatbox/assets/image.dart';
+import 'package:chatbox/signup_page/signup_page.dart';
+import 'package:chatbox/welcome/home_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginWithAccount extends StatefulWidget {
@@ -120,21 +122,31 @@ class _LoginWithAccountState extends State<LoginWithAccount> {
             width: 380,
             height: 58,
             decoration: BoxDecoration(
+
               borderRadius: BorderRadius.circular(100),
               color: Color(0XFF11B1A5),
             ),
-            child: TextButton(
-              onPressed: () {},
-              child: Text(
-                'Sign in',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xFFFFFFFF),
+
+
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => HomePage()));
+                },
+                child: Text(
+                  'Sign in',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                    color: Color(0xFFFFFFFF),
+                  ),
                 ),
+
               ),
+
             ),
-          ), //Button Sign in
+
+          //Button Sign in
 
           Padding(
             padding: const EdgeInsets.fromLTRB(24, 24, 24, 10),
@@ -196,7 +208,7 @@ class _LoginWithAccountState extends State<LoginWithAccount> {
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child:
-                    Image.asset(ImageAssets.logo_fb),
+                    Image.asset(ImageAssets.logo_Fb,),
 
 
                 ),
@@ -210,7 +222,7 @@ class _LoginWithAccountState extends State<LoginWithAccount> {
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child:
-                Image.asset(ImageAssets.logo_gg),
+                Image.asset(ImageAssets.logo_Gg),
 
 
               ),
@@ -224,7 +236,7 @@ class _LoginWithAccountState extends State<LoginWithAccount> {
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child:
-                Image.asset(ImageAssets.logo_apple),
+                Image.asset(ImageAssets.logo_Apple),
 
 
               ),
@@ -232,43 +244,52 @@ class _LoginWithAccountState extends State<LoginWithAccount> {
           ), // Logo (fb,gg,apple) - Container
           Padding(
             padding: const EdgeInsets.fromLTRB(24,45,24,0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                RichText(text: TextSpan(
-                  text: "Don't have an account?",
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Color(0xFF9E9E9E),
-                  ),
-                  children: <TextSpan>[
-                    TextSpan(text:  "  Sign in", style: TextStyle(fontSize: 14,
-                    fontWeight: FontWeight.w600, color: Color(0xFF00CDBD),
-                ),
-
-
-                ),
-
-                    ]
-
-                      ),
+            child:  GestureDetector(
+                onTap: () {
+    Navigator.push(context, MaterialPageRoute(
+    builder: (context) => SignupPage()));
+    },
 
 
 
 
-                //Row(
-                // padding:
-                //   Container(color: Color(0xFFEEEEEE)),
-                // Text("or continue with"),
-                //   Container(color: Color(0xFFEEEEEE)),
-                // ],
 
-                    ),
-              ],
+
+            child: RichText(text: TextSpan(
+
+
+              text: "Don't have an account?",
+              style: TextStyle(
+                fontSize: 14,
+                color: Color(0xFF9E9E9E),
+              ),
+              children: <TextSpan>[
+
+                TextSpan(text:  "  Sign up", style: TextStyle(fontSize: 14,
+                fontWeight: FontWeight.w600, color: Color(0xFF00CDBD),
             ),
+
+
+            ),
+
+                ]
+
+                  ),
+
+
+
+
+            //Row(
+            // padding:
+            //   Container(color: Color(0xFFEEEEEE)),
+            // Text("or continue with"),
+            //   Container(color: Color(0xFFEEEEEE)),
+            // ],
+
+                ),
           ), // Don't have an account? Sign up build(RichText and Row)
-    ],
+    ),
+    ]
       ),
     );
   }

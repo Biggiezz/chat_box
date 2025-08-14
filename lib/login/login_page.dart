@@ -87,7 +87,7 @@ class _LoginState extends State<Login> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Image.asset(
-                              ImageAssets.logo_gg,
+                              ImageAssets.logo_Gg,
                               width: 45,
                               height: 20,
                             ),

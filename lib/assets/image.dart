@@ -1,9 +1,11 @@
 class ImageAssets{
  static const imagePath = 'assets/images';
  static const logo = '$imagePath/Logo.png';
- static const logo_fb = '$imagePath/Logo_fb.png';
- static const logo_gg = '$imagePath/logoGG.png';
- static const logo_apple = '$imagePath/icon_apple_signup.png';
+ static const logo_Fb = '$imagePath/logo_fb.png';
+ static const logo_Gg = '$imagePath/logoGG.png';
+ static const logo_Apple = '$imagePath/icon_apple_signup.png';
  static const email = '$imagePath/email.png';
  static const lock = '$imagePath/lock.png';
+ static const profile = '$imagePath/logo_profile.png';
+ static const mobile = '$imagePath/choice_mobile_phone.png';
 }

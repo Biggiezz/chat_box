@@ -1,7 +1,7 @@
 import 'package:chatbox/assets/image.dart';
-import 'package:chatbox/login/login_page.dart';
-import 'package:chatbox/signin_with_password/sign_in_page.dart';
+import 'package:chatbox/create_page/login_with_account.dart';
 import 'package:chatbox/src/blocs/signup_block.dart';
+import 'package:chatbox/welcome/home_page.dart';
 import 'package:flutter/material.dart';
 
 class SignupPage extends StatefulWidget {
@@ -154,7 +154,7 @@ class _SignupPageState extends State<SignupPage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Login()),
+                        MaterialPageRoute(builder: (context) => HomePage()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -182,13 +182,64 @@ class _SignupPageState extends State<SignupPage> {
 
               // Social buttons
               Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  _buildSocialButton(ImageAssets.logo_fb),
-                  _buildSocialButton(ImageAssets.logo_gg),
-                  _buildSocialButton(ImageAssets.logo_apple),
+                  Container(
+                    height: 60,
+                    width: 88,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Color(0xFFEEEEEE),
+                      ),
+                      borderRadius: BorderRadius.circular(16),
+
+
+                    ),
+                    child: Image.asset(ImageAssets.logo_Fb,
+                      height: 24,
+                         width: 24,),
+                  ),
+                  Container(
+                    height: 60,
+                    width: 88,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Color(0xFFEEEEEE),
+                      ),
+                      borderRadius: BorderRadius.circular(16),
+
+
+                    ),
+                    child: Image.asset(ImageAssets.logo_Apple,
+                      height: 24,
+                      width: 24,),
+                  ),
+                  Container(
+                    height: 60,
+                    width: 88,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Color(0xFFEEEEEE),
+                      ),
+                      borderRadius: BorderRadius.circular(16),
+
+
+                    ),
+                    child: Image.asset(ImageAssets.logo_Apple,
+                      height: 24,
+                      width: 24,),
+                  ),
                 ],
               ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //   children: [
+              //     _buildSocialButton(ImageAssets.logo_Fb),
+                // _buildSocialButton(ImageAssets.logo_Gg),
+                  // _buildSocialButton(ImageAssets.logo_Apple),
+              //   ],
+              // ),
 
               Padding(
                 padding: const EdgeInsets.fromLTRB(75,59,75,0),
@@ -209,7 +260,7 @@ class _SignupPageState extends State<SignupPage> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => SignInPage()),
+                          MaterialPageRoute(builder: (context) => LoginWithAccount()),
                         );
                       },
                       child: const Text(

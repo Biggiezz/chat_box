@@ -21,6 +21,7 @@ class _LoginWithAccountState extends State<LoginWithAccount> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
+          //Text  "Login to your Account"
           Padding(
             padding: const EdgeInsets.fromLTRB(24, 40, 24, 45),
             child: Text(
@@ -85,7 +86,7 @@ class _LoginWithAccountState extends State<LoginWithAccount> {
                 prefixIcon: Icon(Icons.lock, color: Color(0XFF9E9E9E)),
               ),
             ),
-          ),
+          ), // Password
           Padding(
             padding: const EdgeInsets.fromLTRB(130, 0, 0, 24),
             child: Row(
@@ -114,7 +115,7 @@ class _LoginWithAccountState extends State<LoginWithAccount> {
                 ),
               ],
             ),
-          ),
+          ), //Checkbox
           Container(
             width: 380,
             height: 58,
@@ -133,7 +134,7 @@ class _LoginWithAccountState extends State<LoginWithAccount> {
                 ),
               ),
             ),
-          ),
+          ), //Button Sign in
 
           Padding(
             padding: const EdgeInsets.fromLTRB(24, 24, 24, 10),
@@ -179,7 +180,7 @@ class _LoginWithAccountState extends State<LoginWithAccount> {
 
             ),
 
-          ),
+          ), // buildOr
           SizedBox(height: 24),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -228,7 +229,7 @@ class _LoginWithAccountState extends State<LoginWithAccount> {
 
               ),
             ],
-          ),
+          ), // Logo (fb,gg,apple) - Container
           Padding(
             padding: const EdgeInsets.fromLTRB(24,45,24,0),
             child: Row(
@@ -266,7 +267,7 @@ class _LoginWithAccountState extends State<LoginWithAccount> {
                     ),
               ],
             ),
-          ),
+          ), // Don't have an account? Sign up build(RichText and Row)
     ],
       ),
     );

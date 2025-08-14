@@ -30,7 +30,10 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(24,0,24,0),
@@ -211,7 +214,7 @@ class _SignupPageState extends State<SignupPage> {
 
 
                     ),
-                    child: Image.asset(ImageAssets.logo_Apple,
+                    child: Image.asset(ImageAssets.logo_Gg,
                       height: 24,
                       width: 24,),
                   ),

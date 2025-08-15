@@ -10,4 +10,5 @@ class ImageAssets{
  static const mobile = '$imagePath/choice_mobile_phone.png';
  static const sms = '$imagePath/via_sms.png';
  static const forGotPass ='$imagePath/logo_forgot_pass.png';
+ static const emailForGotPass ='$imagePath/icon_email_forgot_pass.png';
 }

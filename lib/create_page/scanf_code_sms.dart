@@ -1,14 +1,14 @@
 import 'package:chatbox/create_page/create_new_pass_word.dart';
 import 'package:flutter/material.dart';
 
-class ScanfCode extends StatefulWidget {
-  const ScanfCode({super.key});
+class ScanfCodeSms extends StatefulWidget {
+  const ScanfCodeSms({super.key});
 
   @override
-  State<ScanfCode> createState() => _ScanfCodeState();
+  State<ScanfCodeSms> createState() => _ScanfCodeSmsState();
 }
 
-class _ScanfCodeState extends State<ScanfCode> {
+class _ScanfCodeSmsState extends State<ScanfCodeSms> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

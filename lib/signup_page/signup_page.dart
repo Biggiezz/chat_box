@@ -31,12 +31,10 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-      ),
+      appBar: AppBar(backgroundColor: Colors.white),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(24,0,24,0),
+          padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -61,7 +59,7 @@ class _SignupPageState extends State<SignupPage> {
                   controller: _emailController,
                   decoration: InputDecoration(
                     labelText: 'Email',
-                   // filled: true,
+                    // filled: true,
                     fillColor: _emailFocus.hasFocus
                         ? Color(0xff00CDBD)
                         : Color(0xffFAFAFA),
@@ -85,7 +83,7 @@ class _SignupPageState extends State<SignupPage> {
                   obscureText: !_showPass,
                   decoration: InputDecoration(
                     labelText: 'Password',
-                  //  filled: true,
+                    //  filled: true,
                     fillColor: _passwordFocus.hasFocus
                         ? Color(0xff00CDBD)
                         : Color(0xffFAFAFA),
@@ -93,12 +91,7 @@ class _SignupPageState extends State<SignupPage> {
                     suffixIcon: IconButton(
                       icon: Icon(
                         _showPass ? Icons.visibility : Icons.visibility_off,
-
-                      //   color: _passwordFocus.hasFocus
-                      //   //    ? Color(0xff00CDBD)
-                      //     //  : Color(0xff00CDBD),
-                      //
-                        ),
+                      ),
                       onPressed: () {
                         setState(() {
                           _showPass = !_showPass;
@@ -175,13 +168,10 @@ class _SignupPageState extends State<SignupPage> {
                 ),
               ),
 
-              const SizedBox(
-                  width: 24,
-              height: 59),
+              const SizedBox(width: 24, height: 59),
               _buildOr(),
 
-              const SizedBox(width: 24,
-                  height: 30),
+              const SizedBox(width: 24, height: 30),
 
               // Social buttons
               Row(
@@ -192,53 +182,47 @@ class _SignupPageState extends State<SignupPage> {
                     height: 60,
                     width: 88,
                     decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Color(0xFFEEEEEE),
-                      ),
+                      border: Border.all(color: Color(0xFFEEEEEE)),
                       borderRadius: BorderRadius.circular(16),
-
-
                     ),
 
-                    child: Image.asset(ImageAssets.logo_Fb,
+                    child: Image.asset(
+                      ImageAssets.logo_Fb,
                       height: 24,
-                         width: 24,),
+                      width: 24,
+                    ),
                   ),
                   Container(
                     height: 60,
                     width: 88,
                     decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Color(0xFFEEEEEE),
-                      ),
+                      border: Border.all(color: Color(0xFFEEEEEE)),
                       borderRadius: BorderRadius.circular(16),
-
-
                     ),
-                    child: Image.asset(ImageAssets.logo_Gg,
+                    child: Image.asset(
+                      ImageAssets.logo_Gg,
                       height: 24,
-                      width: 24,),
+                      width: 24,
+                    ),
                   ),
                   Container(
                     height: 60,
                     width: 88,
                     decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Color(0xFFEEEEEE),
-                      ),
+                      border: Border.all(color: Color(0xFFEEEEEE)),
                       borderRadius: BorderRadius.circular(16),
-
-
                     ),
-                    child: Image.asset(ImageAssets.logo_Apple,
+                    child: Image.asset(
+                      ImageAssets.logo_Apple,
                       height: 24,
-                      width: 24,),
+                      width: 24,
+                    ),
                   ),
                 ],
               ),
 
               Padding(
-                padding: const EdgeInsets.fromLTRB(75,59,75,0),
+                padding: const EdgeInsets.fromLTRB(75, 59, 75, 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -256,7 +240,9 @@ class _SignupPageState extends State<SignupPage> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => LoginWithAccount()),
+                          MaterialPageRoute(
+                            builder: (context) => LoginWithAccount(),
+                          ),
                         );
                       },
                       child: const Text(
@@ -308,4 +294,3 @@ class _SignupPageState extends State<SignupPage> {
     );
   }
 }
-

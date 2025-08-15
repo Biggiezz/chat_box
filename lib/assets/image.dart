@@ -8,4 +8,6 @@ class ImageAssets{
  static const lock = '$imagePath/lock.png';
  static const profile = '$imagePath/logo_profile.png';
  static const mobile = '$imagePath/choice_mobile_phone.png';
+ static const sms = '$imagePath/via_sms.png';
+ static const forGotPass ='$imagePath/logo_forgot_pass.png';
 }

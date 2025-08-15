@@ -1,4 +1,5 @@
 import 'package:chatbox/assets/image.dart';
+import 'package:chatbox/create_page/forgot_password.dart';
 import 'package:chatbox/signup_page/signup_page.dart';
 import 'package:chatbox/welcome/home_page.dart';
 import 'package:flutter/material.dart';
@@ -57,7 +58,7 @@ class _LoginWithAccountState extends State<LoginWithAccount> {
           Padding(
             padding: const EdgeInsets.fromLTRB(24, 24, 24, 10),
             child: TextField(
-             // focusNode: _passwordFocus,
+              // focusNode: _passwordFocus,
               controller: _passwordController,
               obscureText: !_showPass,
               decoration: InputDecoration(
@@ -122,46 +123,51 @@ class _LoginWithAccountState extends State<LoginWithAccount> {
             width: 380,
             height: 58,
             decoration: BoxDecoration(
-
               borderRadius: BorderRadius.circular(100),
               color: Color(0XFF11B1A5),
             ),
 
-
-              child: TextButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => HomePage()));
-                },
-                child: Text(
-                  'Sign in',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                    color: Color(0xFFFFFFFF),
-                  ),
+            child: TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomePage()),
+                );
+              },
+              child: Text(
+                'Sign in',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: Color(0xFFFFFFFF),
                 ),
-
               ),
-
             ),
+          ),
 
           //Button Sign in
-
           Padding(
             padding: const EdgeInsets.fromLTRB(24, 24, 24, 10),
 
-            child: Text(
-              "Forgot the password?",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: Color(0xFF00CDBD),
+            child: GestureDetector(
+              onTap: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ForgotPassword()),
+                );
+              },
+              child: Text(
+                "Forgot the password?",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xFF00CDBD),
+                ),
               ),
             ),
           ), // Forgot password
           Padding(
-            padding: const EdgeInsets.fromLTRB(0,30,0,0),
+            padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -170,13 +176,19 @@ class _LoginWithAccountState extends State<LoginWithAccount> {
                   padding: const EdgeInsets.fromLTRB(24, 0, 0, 0),
                   child: Container(
                     width: 70,
-                   height: 1,
+                    height: 1,
 
                     color: Color(0xFFEEEEEE),
                   ),
                 ),
                 SizedBox(width: 16),
-                Text("or continue with", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600,color: Color(0xFF616161)),
+                Text(
+                  "or continue with",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFF616161),
+                  ),
                 ),
                 SizedBox(width: 16),
                 Padding(
@@ -187,11 +199,8 @@ class _LoginWithAccountState extends State<LoginWithAccount> {
                     color: Color(0xFFEEEEEE),
                   ),
                 ),
-
               ],
-
             ),
-
           ), // buildOr
           SizedBox(height: 24),
           Row(
@@ -202,94 +211,59 @@ class _LoginWithAccountState extends State<LoginWithAccount> {
                 height: 60,
                 width: 88,
                 decoration: BoxDecoration(
-                 border: Border.all(
-                   color: Color(0xFFEEEEEE),
-                 ),
+                  border: Border.all(color: Color(0xFFEEEEEE)),
                   borderRadius: BorderRadius.circular(16),
                 ),
-                child:
-                    Image.asset(ImageAssets.logo_Fb,),
-
-
-                ),
-              Container(
-                height: 60,
-                width: 88,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Color(0xFFEEEEEE),
-                  ),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child:
-                Image.asset(ImageAssets.logo_Gg),
-
-
+                child: Image.asset(ImageAssets.logo_Fb),
               ),
               Container(
                 height: 60,
                 width: 88,
                 decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Color(0xFFEEEEEE),
-                  ),
+                  border: Border.all(color: Color(0xFFEEEEEE)),
                   borderRadius: BorderRadius.circular(16),
                 ),
-                child:
-                Image.asset(ImageAssets.logo_Apple),
-
-
+                child: Image.asset(ImageAssets.logo_Gg),
+              ),
+              Container(
+                height: 60,
+                width: 88,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Color(0xFFEEEEEE)),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Image.asset(ImageAssets.logo_Apple),
               ),
             ],
           ), // Logo (fb,gg,apple) - Container
           Padding(
-            padding: const EdgeInsets.fromLTRB(24,45,24,0),
-            child:  GestureDetector(
-                onTap: () {
-    Navigator.push(context, MaterialPageRoute(
-    builder: (context) => SignupPage()));
-    },
-
-
-
-
-
-
-            child: RichText(text: TextSpan(
-
-
-              text: "Don't have an account?",
-              style: TextStyle(
-                fontSize: 14,
-                color: Color(0xFF9E9E9E),
-              ),
-              children: <TextSpan>[
-
-                TextSpan(text:  "  Sign up", style: TextStyle(fontSize: 14,
-                fontWeight: FontWeight.w600, color: Color(0xFF00CDBD),
-            ),
-
-
-            ),
-
-                ]
-
-                  ),
-
-
-
-
-            //Row(
-            // padding:
-            //   Container(color: Color(0xFFEEEEEE)),
-            // Text("or continue with"),
-            //   Container(color: Color(0xFFEEEEEE)),
-            // ],
-
+            padding: const EdgeInsets.fromLTRB(24, 45, 24, 0),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignupPage()),
+                );
+              },
+              child: RichText(
+                text: TextSpan(
+                  text: "Don't have an account?",
+                  style: TextStyle(fontSize: 14, color: Color(0xFF9E9E9E)),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: "  Sign up",
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFF00CDBD),
+                      ),
+                    ),
+                  ],
                 ),
-          ), // Don't have an account? Sign up build(RichText and Row)
-    ),
-    ]
+              ),
+            ), // Don't have an account? Sign up build(RichText and Row)
+          ),
+        ],
       ),
     );
   }

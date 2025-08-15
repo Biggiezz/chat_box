@@ -199,6 +199,7 @@ class _SignupPageState extends State<SignupPage> {
 
 
                     ),
+
                     child: Image.asset(ImageAssets.logo_Fb,
                       height: 24,
                          width: 24,),
@@ -235,14 +236,6 @@ class _SignupPageState extends State<SignupPage> {
                   ),
                 ],
               ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //   children: [
-              //     _buildSocialButton(ImageAssets.logo_Fb),
-                // _buildSocialButton(ImageAssets.logo_Gg),
-                  // _buildSocialButton(ImageAssets.logo_Apple),
-              //   ],
-              // ),
 
               Padding(
                 padding: const EdgeInsets.fromLTRB(75,59,75,0),
@@ -315,3 +308,4 @@ class _SignupPageState extends State<SignupPage> {
     );
   }
 }
+

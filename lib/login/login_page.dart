@@ -1,7 +1,12 @@
 import 'package:chatbox/assets/image.dart';
 import 'package:chatbox/create_page/login_with_account.dart';
+import 'package:chatbox/login_with_apple/login_apple.dart';
+import 'package:chatbox/login_with_gg/login_gg.dart';
 import 'package:chatbox/signup_page/signup_page.dart';
 import 'package:flutter/material.dart';
+
+import '../login_with_fb/login_fb.dart';
+
 class Login extends StatefulWidget {
   const Login({super.key});
 
@@ -10,203 +15,126 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  get style async => null;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(24),
           child: Column(
             children: [
-              Expanded(
-                child: Column(
-                  children: [
-                    Positioned(
+              Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(88, 60, 88, 40),
+                    child: Image.asset(
+                      ImageAssets.logo,
                       width: 203,
                       height: 160,
-                      top: 112.25,
-                      left: 112.5,
+                    ),
+                  ),
 
-                      child: Image.asset(
-                        ImageAssets.logo,
-                        width: 203,
-                        height: 160,
-                        fit: BoxFit.cover,
+                  Text(
+                    "Let's you in",
+                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 48),
+                  ),
+                  
+                  SizedBox(height: 40.25),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => LoginFb()));
+                    },
+                    child: _buildSocialItemButton(
+                      image: ImageAssets.logo_Fb,
+                      text: 'Continue with Facebook',
+                    ),
+                  ),
+
+                  SizedBox(height: 18),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => LoginGg()));
+                    },
+                    child:  _buildSocialItemButton(
+                      image: ImageAssets.logo_Gg,
+                      text: 'Continue with Google',
+                    ),
+                  ),
+
+                  SizedBox(height: 18),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => LoginApple()));
+                    },
+                    child: _buildSocialItemButton(
+                      image: ImageAssets.logo_Apple,
+                      text: 'Continue with Apple',
+                    ),
+                  ),
+
+
+                  SizedBox(height: 46),
+                  _buildBarOr(),
+                  SizedBox(height: 46),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LoginWithAccount(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF00CDBD),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 100,
+                        vertical: 18,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(100),
                       ),
                     ),
-                    SizedBox(height: 40.25),
-                    Text(
-                      "Let's you in",
+                    child: const Text(
+                      'Sign in with password',
                       style: TextStyle(
+                        fontSize: 16,
                         fontWeight: FontWeight.w700,
-                        fontSize: 48,
+                        color: Colors.white,
                       ),
                     ),
-                    SizedBox(height: 40.25),
-
-                    Container(
-                      padding: EdgeInsets.symmetric(vertical: 16),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(width: 1, color: Color(0xFF00DECD)),
-                      ),
-                      child: Row(
-                        // crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.facebook, weight: 24, color: Colors.blue),
-                          // Image.asset('asset/image/abc.png')
-                          SizedBox(width: 12),
-                          Text(
-                            'Continue with Facebook',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 16),
-                    Container(
-                      padding: EdgeInsets.symmetric(vertical: 16),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(width: 1, color: Color(0xff00DECD)),
-                      ),
-
-                      alignment: Alignment.topLeft,
-
-                      child: SizedBox(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              ImageAssets.logo_Gg,
-                              width: 45,
-                              height: 20,
-                            ),
-
-                            Container(
-                              padding: EdgeInsets.symmetric(horizontal: 2),
-
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        'Continue with Google',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 16,
-                                        ),
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 16),
-                    Container(
-                      padding: EdgeInsets.symmetric(vertical: 16),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(width: 1, color: Color(0xff00DECD)),
-                      ),
-
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center  ,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(30,0,0,0),
-                            child: Icon(Icons.apple,size: 30,),
-                          ),
-SizedBox(width: 12),
-                          Text(
-                            'Continue with Apple',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-
-                              fontSize: 16,
-                            ),
-                          ),
-                          SizedBox(width: 12),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 24),
-                    _buildOr(),
-                    SizedBox(height: 24),
-
-
-                    ElevatedButton(
-                      onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => LoginWithAccount()));
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF00CDBD),
-                        padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 18),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                      ),
-                      child: const Text(
-                        'Sign in with password',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-
-
-                  ],
-                ),
+                  ),
+                ],
               ),
+              SizedBox(height: 30),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Don't have an account?",
 
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Don't have an account?",
-
+                    style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xFF9E9E9E),
+                    ),
+                  ),
+                  SizedBox(width: 8),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SignupPage()),
+                      );
+                    },
+                    child: Text(
+                      "Sign up?",
                       style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xFF9E9E9E),
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFF00CDBD),
                       ),
                     ),
-                    SizedBox(width: 8),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SignupPage()),
-
-
-                        );
-                      },
-                      child: Text(
-                        "Sign up?",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xFF00CDBD),
-                        ),
-                      ),
-                    ),
-                  ]
+                  ),
+                ],
               ),
             ],
           ),
@@ -215,17 +143,19 @@ SizedBox(width: 12),
     );
   }
 
-  Widget _buildOr() {
+  Widget _buildBarOr() {
     return Row(
       children: [
         Expanded(child: Container(color: Color(0xFF00CDBD), height: 1)),
         SizedBox(width: 16),
-        Text('or',
-        style: TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.w600,
-          color: Color(0xFF616161),
-        ),),
+        Text(
+          'or',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+            color: Color(0xFF616161),
+          ),
+        ),
         SizedBox(width: 16),
         Expanded(child: Container(color: Color(0xFF00CDBD), height: 1)),
       ],
@@ -233,27 +163,21 @@ SizedBox(width: 12),
   }
 }
 
-// Widget tạo nút đăng nhập
-Widget _buildLoginOption({
-  required IconData icon,
-  required String text,
-  Color iconColor = Colors.blue,
-}) {
+Widget _buildSocialItemButton({String? image, String? text}) {
   return Container(
-    padding: const EdgeInsets.symmetric(vertical: 16),
+
+    padding: EdgeInsets.symmetric(vertical: 12),
     decoration: BoxDecoration(
+      border: Border.all(color: Color(0xFF00CDBD), width: 1),
       borderRadius: BorderRadius.circular(16),
-      border: Border.all(width: 1, color: const Color(0xff00DECD)),
     ),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(icon, color: iconColor),
-        const SizedBox(width: 12),
-        Text(
-          text,
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-        ),
+        Image.asset(image ?? ''),
+
+        SizedBox(width: 12),
+        Text(text ?? ''),
       ],
     ),
   );

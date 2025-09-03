@@ -77,7 +77,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               child: _buildOptionCard(
                 title: "via Email:",
                 subtitle: "mad****sefs@gmail.com",
-                imagePath: ImageAssets.emailForGotPass , // thay icon email nếu có
+                imagePath: ImageAssets.emailForGotPass ,
                 isSelected: _selectedMethod == "email",
               ),
             ),

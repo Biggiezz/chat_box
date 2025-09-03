@@ -98,13 +98,49 @@ class _CreateNewPassState extends State<CreateNewPass> {
                 color: const Color(0xFF00CDBD),
                 borderRadius: BorderRadius.circular(100),
               ),
-              child: const Center(
-                child: Text(
-                  "Continue",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                    color: Color(0xFFFFFFFF),
+              child: GestureDetector(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Container(
+                        width: 340,
+                        height: 481,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(44),
+                        ),
+                        child: AlertDialog(
+                          insetPadding: EdgeInsets.symmetric(),
+
+                          contentPadding: EdgeInsets.symmetric(),
+                          title: Image.asset(ImageAssets.forGotPassPinal),
+                          content: Center(
+                            child: Text(
+                              "Congratulations! Your account is ready to use. You will be redirected to the Home page in a few seconds.",
+                            ),
+                          ),
+
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text("OK"),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  );
+                },
+                child: const Center(
+                  child: Text(
+                    "Continue",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xFFFFFFFF),
+                    ),
                   ),
                 ),
               ),
@@ -129,7 +165,11 @@ class _CreateNewPassState extends State<CreateNewPass> {
         obscuringCharacter: '*',
         decoration: InputDecoration(
           border: InputBorder.none,
-          prefixIcon: const Icon(Icons.lock, color: Color(0xFF212121), size: 19),
+          prefixIcon: const Icon(
+            Icons.lock,
+            color: Color(0xFF212121),
+            size: 19,
+          ),
           suffixIcon: IconButton(
             icon: Icon(
               _showPass ? Icons.visibility : Icons.visibility_off,

@@ -2,6 +2,7 @@ import 'package:chatbox/assets/image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class StartNewChat extends StatefulWidget {
   const StartNewChat({super.key});
@@ -11,16 +12,52 @@ class StartNewChat extends StatefulWidget {
 }
 
 class _StartNewChatState extends State<StartNewChat> {
+  final TextEditingController _controller = TextEditingController();
+  final List<String> _messages = []; // lưu tất cả tin nhắn
+
+  // Lưu tin nhắn xuống local
+  Future<void> _saveMessages() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList("messages", _messages);
+  }
+
+  // Load tin nhắn khi mở lại app
+  Future<void> _loadMessages() async {
+    final prefs = await SharedPreferences.getInstance();
+    final saved = prefs.getStringList("messages");
+    if (saved != null) {
+      setState(() {
+        _messages.clear();
+        _messages.addAll(saved);
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadMessages();
+  }
+
+  void _sendMessage() {
+    if (_controller.text.trim().isEmpty) return;
+
+    setState(() {
+      _messages.insert(0, _controller.text.trim()); // thêm tin nhắn mới
+    });
+
+    _controller.clear(); // xóa text sau khi gửi
+    _saveMessages(); // lưu lại
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60),
-
         child: Padding(
           padding: const EdgeInsets.only(right: 20),
-
           child: AppBar(
             title: Text(
               'Bobo',
@@ -44,10 +81,39 @@ class _StartNewChatState extends State<StartNewChat> {
         child: Column(
           children: [
             Row(children: [SvgPicture.asset(ImageAssets.boboSmileEye)]),
+            SizedBox(height: 16),
+
             Row(children: [_buildTextBox(text: 'Hello Andrew! I\'m Bobo 😁')]),
             SizedBox(height: 16),
             Row(children: [_buildTextBox(text: 'How are you today??')]),
-            Spacer(),
+
+            // Danh sách tin nhắn
+
+               Expanded(
+                child: ListView.builder(
+                  reverse: true, // tin nhắn mới nằm trên cùng
+                  itemCount: _messages.length,
+                  itemBuilder: (context, index) {
+                    return Align(
+                      alignment: Alignment.centerRight, // căn sang phải
+                      child: Container(
+                        margin: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                        padding: EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: Colors.blueAccent,
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Text(
+                          _messages[index],
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+
+            // Ô nhập + nút gửi
             Row(
               children: [
                 Container(
@@ -57,37 +123,39 @@ class _StartNewChatState extends State<StartNewChat> {
                     borderRadius: BorderRadius.circular(12),
                     color: Colors.grey.shade50,
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20, top: 5),
-                    child: TextField(
-                      decoration: InputDecoration(
-
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius:
-
+                  child: TextField(
+                    controller: _controller,
+                    decoration: InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color(0xFF00CDBD),
+                          width: 1,
                         ),
-                        border: InputBorder.none,
-                        hint: Text(
-                          'Type a message to Bobo ...',
-                          style: TextStyle(
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xFF9E9E9E),
-                          ),
-                        ),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      border: InputBorder.none,
+                      hintText: 'Type a message to Bobo ...',
+                      hintStyle: TextStyle(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFF9E9E9E),
                       ),
                     ),
+                    onSubmitted: (_) => _sendMessage(),
                   ),
                 ),
                 SizedBox(width: 12),
-                Container(
-                  width: 56.w,
-                  height: 56.h,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    color: Color(0xFF00CDBD),
+                GestureDetector(
+                  onTap: _sendMessage,
+                  child: Container(
+                    width: 56.w,
+                    height: 56.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      color: Color(0xFF00CDBD),
+                    ),
+                    child: Center(child: SvgPicture.asset(ImageAssets.send)),
                   ),
-                  child: Center(child: SvgPicture.asset(ImageAssets.send)),
                 ),
               ],
             ),
@@ -101,7 +169,6 @@ class _StartNewChatState extends State<StartNewChat> {
     return Container(
       width: 300.w,
       height: 57.h,
-
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(8),

@@ -1,5 +1,6 @@
 import 'package:chatbox/assets/image.dart';
 import 'package:chatbox/home_start_chat/home_chat_list/chat_with_bobo/start_new_chat.dart';
+import 'package:chatbox/home_start_chat/home_chat_list/ended_chat/ended_chat.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart' show SvgPicture;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,8 +13,6 @@ class HomeChatList extends StatefulWidget {
 }
 
 class _HomeChatListState extends State<HomeChatList> {
- 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +20,7 @@ class _HomeChatListState extends State<HomeChatList> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(48),
         child: Padding(
-          padding: EdgeInsetsGeometry.fromLTRB(10, 10,24, 0),
+          padding: EdgeInsetsGeometry.fromLTRB(10, 10, 24, 0),
           child: AppBar(
             backgroundColor: Colors.white,
             title: Text(
@@ -74,7 +73,18 @@ class _HomeChatListState extends State<HomeChatList> {
                   ),
                   // bật tab xem tất cả tin nhắn
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => EndedChat(
+
+
+                          ),
+                        ),
+                      );
+                    },
+
                     child: Text(
                       'See All',
                       style: TextStyle(
@@ -87,7 +97,7 @@ class _HomeChatListState extends State<HomeChatList> {
                 ],
               ),
               SizedBox(height: 24),
-        
+
               _buildMessTab(
                 text: 'BoBo - Dec 19, 2024',
                 subtext: 'I\'m good too, I\'m reading a book right now 😆😆',
@@ -95,14 +105,14 @@ class _HomeChatListState extends State<HomeChatList> {
               ),
 
               SizedBox(height: 24),
-        
+
               _buildMessTab(
                 text: 'Bobo - Dec 18, 2024',
                 subtext: 'Bobo is very sad today because of an accident',
                 image: ImageAssets.boboErrorEye,
               ),
               SizedBox(height: 24),
-        
+
               _buildMessTab(
                 text: 'BoBo - Dec 18, 2024',
                 subtext:
@@ -110,7 +120,7 @@ class _HomeChatListState extends State<HomeChatList> {
                 image: ImageAssets.boboStarEye,
               ),
               SizedBox(height: 24),
-        
+
               _buildButtonStartChat('Start Another Chat with Bobo'),
             ],
           ),
@@ -207,8 +217,9 @@ class _HomeChatListState extends State<HomeChatList> {
         children: [
           SizedBox(
             width: 100.w,
-              height: 79.h,
-              child: SvgPicture.asset(image ?? '')),
+            height: 79.h,
+            child: SvgPicture.asset(image ?? ''),
+          ),
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
@@ -248,8 +259,11 @@ class _HomeChatListState extends State<HomeChatList> {
 
   Widget _buildButtonStartChat(String? text) {
     return GestureDetector(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context) => StartNewChat()));
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => StartNewChat()),
+        );
       },
       child: Container(
         width: MediaQuery.of(context).size.width,
@@ -263,17 +277,18 @@ class _HomeChatListState extends State<HomeChatList> {
               blurRadius: 24,
               offset: Offset(4, 8),
             ),
-
           ],
-
         ),
-        child:  Center(
-            child: Text(text ??'',
+        child: Center(
+          child: Text(
+            text ?? '',
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w700,
               color: Colors.white,
-            ),)),
+            ),
+          ),
+        ),
       ),
     );
   }

@@ -21,6 +21,10 @@ class ImageAssets{
  static const search ='$imagePath/search.svg';
  static const more ='$imagePath/more.svg';
  static const boboSmileEye = '$imagePath/bobo_smile_eye.svg';
+ static const boboCryEye = '$imagePath/bobo_cry_eye.svg';
+ static const boboSleepEye = '$imagePath/bobo_sleep_eye.svg';
+ static const delete ='$imagePath/delete.svg';
+
  static const send ='$imagePath/send.svg';
 
 
